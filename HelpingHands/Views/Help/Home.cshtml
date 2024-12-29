@@ -1,0 +1,131 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_HelpingHands.cshtml";
+}
+<style>
+    
+    .Captions{
+        display:flex;
+        justify-content:center;
+        height:20vh;
+        align-items:flex-start;
+    }
+    h1{
+        margin-top:30px;
+        font-weight:bold;
+        color:white;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .Information {
+        display: flex;
+        justify-content: center;
+        height: 60vh;
+        align-items: center;
+        
+    }
+    .ul{
+        display:flex;
+        
+        list-style:none;
+        gap:100px;
+        
+        
+    }
+    .list {
+        height: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        width: 350px;
+        background-color:ghostwhite;
+        border: gray solid 2px;
+    }
+        .list:hover {
+            background-color: lightcyan;
+            
+        }
+    .box {
+        border: gray solid 1px;
+        height: 30px;
+        display: flex;
+        padding-left: 20px;
+        margin-right:120px;
+        width: 100px;
+        background-color:azure;
+        justify-content: center;
+        align-items: center;
+        border-radius: 20px;
+        margin-right:20px;
+        margin-top:55px;
+    }
+
+        .box:hover {
+            background-color: rebeccapurple;
+        }
+    
+     p{
+         font-weight:bold;
+         margin-top:-60px;
+         margin-left:33px;
+         margin-right:-30px;
+         color:darkgreen;
+         font-family:Arial ;
+         font-size:small;
+     }
+    a {
+        text-decoration: none;
+        font-weight: bold;
+        font-family: Verdana;
+    }
+    a:hover{
+        color:white;
+    }
+    #color{
+        background-color:rebeccapurple;
+    }
+    img{
+        height:600px;
+        width:600px;
+          padding:50px;
+    
+    }
+    
+</style>
+<body>
+    <div id="color">
+        <div class="Captions">
+            <h1>Give Blood & Save Life</h1>
+        </div>
+        <div class="Information">
+
+            <div class="ul">
+                <div class="list">
+                    <p>Doners Details Are Available</p>
+                    <div class="box">@Html.ActionLink("Doners", "Get")</div>
+                </div>
+                <div class="list">
+                    <p>Helpers Details Is Available</p>
+                    <div class="box">
+                        @Html.ActionLink("Helpers", "Helpers")
+                    </div>
+                </div>
+                <div class="list">
+                    <p class="l1">Groups Details Is Available</p>
+                    <div class="box">
+                        @Html.ActionLink("Groups", "Groups")
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="color:white; font-size:large; font-weight:bold; display:flex; justify-content:center; align-items:center; height:20px; margin-top:-30px;">
+            Doners Information & Helpers
+        </div>
+        <div style="margin-top:30px;margin-left:50px;">
+            <img src="~/Content/imges/copy.jpeg" alt="Alternate Text" />
+            <img src="~/Content/imges/copy.jpeg" alt="Alternate Text" />
+        </div>
+    </div>
+   
+</body>

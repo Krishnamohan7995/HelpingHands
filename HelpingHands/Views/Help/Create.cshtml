@@ -1,0 +1,226 @@
+﻿@model HelpingHands.Models.Users
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_HelpingHands.cshtml";
+}
+
+<style>
+    #group1 {
+        margin: 20px;
+    }
+
+    h4 {
+        margin-left: 130px;
+        color:blue;
+        font-family:Verdana;
+        font-weight:bold;
+        text-transform:uppercase;
+        text-decoration:underline;
+    }
+    h4:hover{
+        color:green;
+    }
+    #form1 {
+        margin-left: 200px;
+        margin-top: -20px;
+    }
+
+    #btn {
+        margin-left: 60px;
+        height: 40px;
+        width: 180px;
+        border-radius: 20px;
+        background-color: forestgreen;
+        border: none;
+        font-weight:bold;
+        font-size:large;
+        color: white;
+        cursor:pointer;
+        text-transform:uppercase;
+        transition:0.5s ease-in-out;
+    }
+    #btn:hover{
+        color:white;
+        background-color:blue;
+    }
+    .a{
+        margin-left:260px;
+        margin-top:12px;
+    }
+    a{
+        
+        color:blue;
+        text-decoration:none;
+        font-weight:bold;
+        font-family:Verdana;
+    }
+    a:hover{
+        color:forestgreen;
+    }
+    label {
+        font-family: Verdana;
+        font-size: medium;
+    }
+    .login{
+        margin-left:420px;
+        margin-top:-20px;
+        margin-bottom:20px;
+    }
+    img{
+        margin-left:740px;
+         filter:brightness(120%) contrast(130%) saturate(130%);
+         margin-top:150px;
+         border-radius:20px;
+         border:gray double 3px;
+           
+
+    }
+</style>
+<img src="~/Content/imges/copy.jpeg" alt="#" />
+<div id="color">
+    
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal" style="margin-left:220px; border:blue solid 1px; border-radius:10px; height:800px;width:450px; margin-top:-500px;background-color:lavender; box-shadow:5px 3px 5px 2px blue;">
+        <h4>Registration</h4>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group" id="group1">
+            @Html.LabelFor(model => model.Uid, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" id="form1">
+                @Html.EditorFor(model => model.Uid, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Uid, "", new { @style = "color:red;font-family:arial;" })
+            </div>
+        </div>
+
+        <div class="form-group" id="group1">
+            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" id="form1">
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @style = "color:red;font-family:arial;" })
+            </div>
+        </div>
+
+        <div class="form-group" id="group1">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" id="form1">
+                @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @style = "color:red;font-family:arial;" })
+            </div>
+        </div>
+
+        <div class="form-group" id="group1">
+            @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" id="form1">
+                @Html.PasswordFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @style = "color:red; font-family:arial;" })
+            </div>
+        </div>
+
+        <div class="form-group" id="group1">
+            @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" id="form1">
+                @Html.RadioButtonFor(model => model.Gender, "Male")Male
+                @Html.RadioButtonFor(model => model.Gender, "Female")Female
+                @Html.ValidationMessageFor(model => model.Gender, "", new { @style = "margin-left:30px;margin-bottom:-10px; color:red;font-family:arial;" })
+            </div>
+        </div>
+
+        <div class="form-group" id="group1">
+            @Html.LabelFor(model => model.Languages, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" id="form1">
+                @Html.ListBoxFor(model => model.Languages, new List<SelectListItem>(){
+new SelectListItem{Text="English",Value="English" },
+new SelectListItem{Text="Telugu",Value="Telugu" },
+new SelectListItem{Text="Hindi",Value="Hindi"}
+})
+                @*@Html.CheckBoxFor(model=>model.Languages,"English")English*@
+                @Html.ValidationMessageFor(model => model.Languages, "", new { @style = "color:red;font-family:arial;" })
+            </div>
+        </div>
+
+        <div class="form-group" id="group1">
+            @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" id="form1">
+                @Html.DropDownListFor(model => model.State, new List<SelectListItem>
+{
+new SelectListItem{Text="Telangana",Value="Telangana",Selected=true},
+new SelectListItem{Text="AndraPradesh",Value="AndraPradesh"},
+new SelectListItem{Text="TamilNadu",Value="TamilNadu" },
+new SelectListItem{Text="Karnataka",Value="Karnataka" },
+new SelectListItem{Text="Maharastra",Value="Maharastra" }
+})
+                @Html.ValidationMessageFor(model => model.State, "", new { @style = "color:red;font-family:arial;" })
+            </div>
+        </div>
+
+        <div class="form-group" id="group1">
+            @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" id="form1">
+                @Html.DropDownListFor(model => model.City, new List<SelectListItem>
+{
+new SelectListItem{Text="Khmmamm",Value="Khammam",Selected=true},
+new SelectListItem{Text="Hyderbad",Value="Hyderbad"},
+new SelectListItem{Text="Suryapet",Value="Suryapet" },
+new SelectListItem{Text="Karimnagar",Value="Karimnagar" },
+new SelectListItem{Text="Warangal",Value="Warangal" }
+})
+                @Html.ValidationMessageFor(model => model.City, "", new { @style = "color:red;font-family:arial;" })
+            </div>
+        </div>
+
+        <div class="form-group" id="group1">
+            @Html.LabelFor(model => model.BloodGroup, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" id="form1">
+                @Html.DropDownListFor(model => model.BloodGroup, new List<SelectListItem>
+{
+new SelectListItem{Text="A  Positive",Value="A+",Selected=true},
+new SelectListItem{Text="B  Positive",Value="B+"},
+new SelectListItem{Text="O  Positive",Value="O+" },
+new SelectListItem{Text="A  Nagative",Value="A-" },
+new SelectListItem{Text="O  Nagative",Value="O-" },
+new SelectListItem{Text="B  Nagative",Value="B-"}
+})
+                @Html.ValidationMessageFor(model => model.BloodGroup, "", new { @style = "color:red;font-family:arial;" })
+            </div>
+        </div>
+
+        <div class="form-group" id="group1">
+            @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" id="form1">
+                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Phone, "", new { @style = "color:red;font-family:arial;" })
+            </div>
+        </div>
+
+        <div class="form-group" id="group1">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" id="form1">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @style = "color:red;font-family:arial;" })
+            </div>
+        </div>
+
+        <div class="form-group" id="group1">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Register" id="btn" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+}
+
+<div>
+    <div class="a"> 
+    @Html.ActionLink("Back to Home", "Home", new { @style = "text-decoration:none;color:blue;font-family:verdena;" })
+        </div>
+    <div class="login">
+        <label>Already Register ?</label>
+        @Html.ActionLink("LOGIN", "LoginCheck")
+    </div>
+</div>
+    </div>
+

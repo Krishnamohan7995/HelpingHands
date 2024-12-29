@@ -1,0 +1,123 @@
+﻿@model HelpingHands.Models.login
+
+@{
+    ViewBag.Title = "LoginCheck";
+    Layout = "~/Views/Shared/_HelpingHands.cshtml";
+}
+<style>
+    #group1 {
+        margin: 20px;
+        margin-left: 25px;
+    }
+
+    h4 {
+        margin-left: 150px;
+        color: blue;
+        font-size: x-large;
+        font-family: Verdana;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-decoration: underline;
+    }
+
+        h4:hover {
+            color: green;
+        }
+
+    #form1 {
+        margin-left: 180px;
+        margin-top: -20px;
+    }
+
+    #btn {
+        margin-left: 60px;
+        height: 40px;
+        width: 180px;
+        border-radius: 20px;
+        background-color: forestgreen;
+        border: none;
+        margin-top: 10px;
+        font-weight: bold;
+        font-size: large;
+        color: white;
+        cursor: pointer;
+        text-transform: uppercase;
+        transition: 0.5s ease-in-out;
+    }
+
+        #btn:hover {
+            color: white;
+            background-color: blue;
+        }
+
+    .a {
+        margin-left: 280px;
+        margin-top: 12px;
+    }
+
+    a {
+        color: blue;
+        text-decoration: none;
+        font-weight: bold;
+        font-family: Verdana;
+    }
+
+        a:hover {
+            color: forestgreen;
+        }
+
+    label {
+        font-family: Verdana;
+        font-size: medium;
+        font-weight: 520;
+    }
+
+    .login {
+        margin-left: 500px;
+        margin-top: -18px;
+        margin-bottom: 20px;
+    }
+     
+</style>
+@using (Html.BeginForm())
+{
+    <div class="color">
+        @Html.AntiForgeryToken()
+       
+        <div class="form-horizontal" style="margin-left: 280px; padding: 10px; border: aqua solid 2px; border-radius: 10px; height: 280px; width: 410px; margin-top: 130px; box-shadow: 5px 3px 6px 2px rgb(0, 148, 255);">
+            <h4>Login</h4>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group" id="group1">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10" id="form1">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @style = "color:red; font-family:verdana;" })
+                </div>
+            </div>
+            <div class="form-group" id="group1">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10" id="form1">
+                    @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @style = "color:red;font-family:verdana;" })
+                </div>
+            </div>
+            <div class="form-group" id="group1">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Login" id="btn" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        <div>
+            <div class="a">
+                @Html.ActionLink("Back to Home", "Home", new { @style = "text-decoration:none;color:blue;font-family:verdena;" })
+            </div>
+            <div class="login">
+                <label>New User ?</label>
+                @Html.ActionLink("REGISTER", "create")
+            </div>
+        </div>
+          
+    </div>
+}

@@ -1,0 +1,135 @@
+﻿
+@{
+    ViewBag.Title = "check";
+    Layout = "~/Views/Shared/_HelpingHands.cshtml";
+}
+
+<h6>Search For Doners</h6>
+
+
+<html>
+<head>
+    @*<link href="~/lib/twitter-bootstrap/css/bootstrap-grid.css" rel="stylesheet" />*@
+    <style>
+        table {
+            width: 1200px;
+            column-rule-style: solid;
+            margin: 30px;
+            margin-top: 30px;
+            margin-left: 180px;
+            border-style: groove;
+            border:gray groove 1px;
+            border-inline-style: groove;
+        }
+        h6{
+            margin-left:600px;
+            margin-top:30px;
+            margin-bottom:40px;
+            font-family:Verdana;
+            color:purple;
+            font-size:x-large;
+        }
+        form{
+            margin-left:180px;
+            
+        }
+        #txt1 {
+            width: 280px;
+            height: 30px;
+            margin-left: 22px;
+            font-size: medium;
+            color: gray;
+            text-align: start;
+            font-weight: bold;
+            font-family: Verdana;
+            margin-bottom: 20px;
+            border: rebeccapurple solid 2px;
+        }
+            #txt1::placeholder {
+                font-size: medium;
+                font-weight: bold;
+                color: gray;
+                text-transform: uppercase;
+                font-family: Verdana;
+               
+            }
+          
+        label{
+            font-size:large;
+            font-family:Verdana;
+            font-weight:bold;
+            text-transform:uppercase;
+            color:darkblue;
+        }
+        #btn {
+            height: 34px;
+            width: 120px;
+            font-size: large;
+            font-weight: bold;
+            font-family: Verdana;
+            color: white;
+            margin-left: -5px;
+            background-color: rebeccapurple;
+            border-radius: 2px;
+            border: none;
+            cursor: pointer;
+        }
+        #btn:hover{
+            color:white;
+            background-color:blue;
+        }
+        th{
+            font-family:Verdana;
+            font-weight:bold;
+            color:black;
+            font-size:medium;
+        }
+        td{
+            font-family:Verdana;
+            font-weight:bold;
+            color:rebeccapurple;
+            font-size:medium;
+        }
+        a {
+            text-decoration: none;
+            font-weight: bold;
+            font-family: Verdana;
+        }
+
+            a:hover {
+                color: white;
+            }
+    </style>
+</head>
+<body>
+    <form>
+        <label> Search </label> <input type="search" id="txt1"  contenteditable="true"  placeholder="Search For Doner Name" />
+        <input type="submit" value="Search" id="btn" />
+    </form>
+    <table class="tabel table-hover" border="1" id="table1">
+    </table>
+    <script src="~/Scripts/jquery-3.7.0.slim.min.js"></script>
+    <script>
+        $("#btn").click(fun1);
+        function fun1(event) {
+            event.preventDefault()
+            $.ajax({
+                url: "/Help/Search?str=" + $("#txt1").val(),
+                type: "GET",
+                success: fun2,
+                error: fun3
+            });
+        }
+        function fun2(response) {
+            $("#table1").html("<tr><th>Uid</th><th> UserName </th><th>Password</th><th>ConfirmPassword</th><th>Gender</th><th>Languages</th><th>State</th> <th>City</th><th>BloodGroup</th><th>Phone</th><th>Email</th></tr>");
+            for (var i = 0; i <= response.length; i++) {
+                $("#table1").append("<tr><td>" + response[i].Uid + "</td><td>" + response[i].UserName + "</td><td>" + response[i].Password + "</td><td>" + response[i].ConfirmPassword + "</td> <td>" + response[i].Gender + "</td> <td>" + response[i].Languages + "</td> <td>" + response[i].State + "</td> <td>" + response[i].City + "</td> <td>" + response[i].BGroup + "</td> <td>" + response[i].Phone + "</td> <td>" + response[i].Email + "</td></tr>");
+            }
+        }
+        function fun3(xhr) {
+            alert(xhr.responseText)
+        }
+
+    </script>
+</body>
+</html>

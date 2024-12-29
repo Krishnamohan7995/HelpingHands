@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+           
+        }
+
+        .header {
+            height: 10vh;
+            border: gray solid 1px;
+            display: flex;
+            justify-content: space-between;
+            background-color: whitesmoke;
+            align-items: center;
+            background-color: lightcyan;
+        }
+        
+        h3{
+            color:lightcoral;
+            font-size:x-large;
+            margin-left:40px;
+            font-weight:bold;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            text-transform:uppercase;
+        }
+        .content {
+            height: 80vh;
+            background-color: ghostwhite;
+            overflow: scroll;
+            overflow-x: hidden;
+            border: gray solid 1px;
+        }
+
+        .footer {
+            height: 10vh;
+            background-color: whitesmoke;
+            border: gray solid 1px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: lightcyan;
+        }
+        .hiding{
+           
+        }
+        #a{
+             padding:20px;
+            margin-right:50px;
+            font-size:large;
+            font-weight:bold;
+            color:blue;
+            font-family:'Bookman Old Style';
+            text-decoration:none;
+        }
+        #a:hover{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h3>Helping Hands</h3>
+        <div class="options">
+            <div id="a">
+             @Html.ActionLink("Home","Home","Help",new { @style = "color:gray;text-decoration:none;margin-right:40px;" })
+            @Html.ActionLink("Details","Get","Help", new { @style = "color:gray;text-decoration:none;margin-right:30px;" })
+            @Html.ActionLink("Search", "check","Help", new { @style = "color:gray;text-decoration:none;margin-right:20px;" })
+            @Html.ActionLink("Login","LoginCheck","Help", new { @style = "color:gray;text-decoration:none;margin-right:10px;" })
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        @RenderBody()
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+    </div>
+    <div class="footer">
+        <h2 style="color:gray;">Copyright@gmail.com</h2>
+        
+    </div>
+</body>
+</html>
